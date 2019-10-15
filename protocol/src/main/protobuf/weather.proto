@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package dopenkov;
+
+service WeatherService {
+  rpc getWeather (WeatherRequest) returns (WeatherReply) {}
+  rpc listWeather (stream WeatherRequest) returns (stream WeatherReply) {}
+  rpc serviceMessage (ServiceMessage) returns (ServiceReply) {}
+}
+
+// The weather request message
+message WeatherRequest {
+  string city = 1;
+  string region = 2;
+  string countryCode = 3;
+}
+
+// The weather response message
+message WeatherReply {
+  enum Status {
+    OK = 0;
+    NOT_FOUND = 1;
+    AMBIGUOUS_CITY = 2;
+    SERVICE_UNAVAILABLE = 3;
+  }
+  string city = 1;
+  string region = 2;
+  string countryCode = 3;
+  double temperature = 4;
+  Status status = 5;
+}
+
+// The service message
+message ServiceMessage {
+  enum Signal {
+    STOP = 0;
+    DROP_ALL = 1;
+  }
+  Signal signal = 1;
+}
+
+// The service reply
+message ServiceReply {
+  enum Status {
+    OK = 0;
+    ERROR = 1;
+  }
+  Status status = 1;
+}
