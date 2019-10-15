@@ -15,14 +15,14 @@ You need [sbt](https://www.scala-sbt.org/) for building the project.
   ```
 1. Import the project into your favorite IDE.
 
-#Running
+# Running
 
 * You need to run the server app. Go to the project dir and execute
 ```shell
 sbt "server/runMain dopenkov.weather.server.WeatherApplication"
 ```
 
-##Client apps
+## Client apps
 There are 2 clients in the project: 
  1. a simple client that gets the temperature for a single city and sends a shutdown server command
  2. a streaming client that gets the temperature for multiple cities in a stream mode. 
